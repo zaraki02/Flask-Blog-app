@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Blog diary</title>
+<head>
+
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!---- icons-------->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <style>
+    .mySlides {display:none;}
+
+    footer
+    {
+      background-color: #00bfff;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+    .fa {
+      padding: 10px;
+      font-size: 20px;
+      width: 50px;
+      height: 20px
+      text-align: center;
+      text-decoration: none;
+      margin: 5px 10px;
+      border-radius: 30%;
+      border: 2px;
+    }
+
+    .fa:hover {
+        opacity: 0.7;
+    }
+
+    .fa-facebook {
+      background: #3B5998;
+      color: white;
+    }
+
+    .fa-linkedin {
+      background: #007bb5;
+      color: white;
+    }
+
+    .fa-instagram {
+      background: #881212;
+      color: white;
+    }
+
+
+.icon-bar {
+  position: fixed;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.icon-bar a {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 20px;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+.facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.instagram {
+  background: #881212;
+  color: white;
+}
+main
+{
+margin-bottom: 50px;
+}
+    </style>
+
+
+    <link rel="icon" href=".\static\blogs.jpg" type="image/jpg" sizes="16x16">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+    <meta charset="UTF-8">
+        {% if title %}
+            <title>{{title}}</title>
+        {% else %}
+            <title>No title</title>
+        {% endif %}
+
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+    <div class="container">
+      <a class="navbar-brand mr-4" href="/"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggle" style="padding:-20px; margin-top:-20px; margin-bottom: -10px;">
+        <div class="navbar-nav mr-auto">
+          <a class="nav-item nav-link" href="{{url_for('home')}}"><i class="fa fa-home" style="font-size:24px"></i>Home</a>
+          <a class="nav-item nav-link" href="{{url_for('about')}}" style="margin-top:17px;"><i class='fab fa-microblog' style='font-size:24px'></i>   Blogs</a>
+        </div>
+        <!-- Navbar Right Side -->
+        <div class="navbar-nav">
+          {% if current_user.is_authenticated %}
+            <a class="nav-item nav-link" href="{{url_for('new_post')}}">Create Post</a>
+            <a class="nav-item nav-link" href="{{url_for('Account')}}">Account</a>
+            <a class="nav-item nav-link" href="{{url_for('Logout')}}">Logout</a>
+          {% else %}
+          <a class="nav-item nav-link" href="{{url_for('Login')}}">Login</a>
+          <a class="nav-item nav-link" href="{{url_for('Register')}}">Register</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="icon-bar">
+    <div class="icon-bar">
+       <a href="https://www.facebook.com/profile.php?id=100010684060256" class="facebook"><i class="fa fa-facebook"></i></a>
+       <a href="https://www.linkedin.com/in/abhijeet-chatterjee-620344167/" class="linkedin"><i class="fa fa-linkedin"></i></a>
+       <a href="https://www.instagram.com/abhijeet_zaraki/" class="instagram"><i class="fa fa-instagram"></i></a>
+</div>
+<!--<a href="https://www.facebook.com/profile.php?id=100010684060256" class="fa fa-facebook facebook"></a>
+<a href="https://www.linkedin.com/in/abhijeet-chatterjee-620344167/" class="fa fa-linkedin linkedin"></a>
+<a href="https://www.instagram.com/abhijeet_zaraki/" class="fa fa-instagram instagram"></a>
+
+-->
+    </div>
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages%}
+            {% for category, msg in messages %}
+                <div class="alert alert-{{category}}">
+                    {{ msg }}
+                </div>
+            {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      {% block content %}
+      {% endblock %}
+        {% if current_user.is_authenticated %}
+    </div>
+    <div class="col-md-4" style="position: fixed; left: 950px; top: 100px; width:400px;">
+      <div class="content-section">
+        <h3>Announcements</h3>
+        <p class='text-muted'>
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-light">Post and contribute to the site</li>
+            <li class="list-group-item list-group-item-light"></li>
+            <li class="list-group-item list-group-item-light">Share your ideas</li>
+            <li class="list-group-item list-group-item-light"></li>
+          </ul>
+        </p>
+      </div>
+    </div>
+     {% endif %}
+  </div>
+</main>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+
+
+<footer class="page-footer font-small indigo" color="black">
+
+  @created by Abhijeet Chatterjee
+</footer>
+
+</body>
